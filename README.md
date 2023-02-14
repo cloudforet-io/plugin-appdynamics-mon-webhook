@@ -72,4 +72,6 @@ curl -X POST https://your_spaceone_monitoring_webhook_url -d '{
 }
 ```
 
+# Reference
 
+https://docs.appdynamics.com/appd/4.5.x/en/appdynamics-essentials/alert-and-respond/actions/http-request-actions-and-templates
