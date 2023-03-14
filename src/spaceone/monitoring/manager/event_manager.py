@@ -4,8 +4,7 @@ import json
 from spaceone.core import utils
 from datetime import datetime
 from spaceone.core.manager import BaseManager
-from spaceone.monitoring.manager.incident_1_2 import Incident_1_2
-from spaceone.monitoring.manager.incident import Incident
+from spaceone.monitoring.manager.alert import Alert
 
 from spaceone.monitoring.model.event_response_model import EventModel
 from spaceone.monitoring.error.event import *
@@ -19,23 +18,16 @@ class EventManager(BaseManager):
 
     def parse(self, raw_data):
         results = []
-
-        version = raw_data.get('version')
-        if version == '1.2':
-            inst = Incident_1_2(raw_data.get('incident', {}), version)
-        elif version == 'test':
-            inst = Incident(raw_data.get('incident', {}), version)
-        else:
-            # unsupported version
-            inst = Incident(raw_data.get('incident', {}), version)
-            _LOGGER.critical(f'Unsupported version: {version}')
-        event_dict = inst.get_event_dict()
-        event_vo = self._check_validity(event_dict)
-        results.append(event_vo)
+        events = raw_data.get('events', [])
+        for event in events:
+            inst = Alert(event)
+            event_dict = inst.get_event_dict()
+            event_vo = self._check_validity(event_dict)
+            results.append(event_vo)
         _LOGGER.debug(f'[EventManager] parse Event : {event_dict}')
 
         return results
-
+ 
     @staticmethod
     def _check_validity(event_dict):
         try:

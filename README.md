@@ -1,10 +1,13 @@
 # plugin-cisco-appdynamics-mon-webhook
-webhook for Cisco AppDynamics
+webhook from Cisco AppDynamics
 
 ![Architecture](docs/en/appdynamics-webhook-architecture.png)
 # Data Model
 
 ## AppDynamics to Cloudforet
+
+Free Trial of AppDynamics
+https://www.appdynamics.com/free-trial/
 
 
 Webhook notification: 
