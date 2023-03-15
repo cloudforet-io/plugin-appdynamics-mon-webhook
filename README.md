@@ -7,6 +7,33 @@ webhook from Cisco AppDynamics
 
 https://docs.appdynamics.com/appd/4.5.x/en/appdynamics-essentials/alert-and-respond/actions/predefined-templating-variables
 
+## HTTP Request Template (Payload)
+
+~~~
+{
+  "account_name": "${account.name}",
+  "policy_name": "${policy.name}",
+  "events": [
+  #foreach( $event in $fullEventList )
+  {
+  "guid": "$event.guid",
+  "event_id": "${latestEvent.id}",
+  "application_name": "${latestEvent.application.name}",
+  "eventTypeKey": "$event.eventTypeKey",
+  "severity": "$event.severity",
+  "displayName": "$event.displayName",
+  "summaryMessage": "$event.summaryMessage",
+  "eventTime": "${event.eventTime}",
+  "deepLink": "${event.deepLink}"
+  }#if( $foreach.hasNext ),#end
+  #end
+  ],
+  "topSeverity": "${topSeverity}",
+  "controllerUrl": "${controllerUrl}",
+  "action_name": "${action.name}"
+}
+~~~
+
 ## AppDynamics to Cloudforet
 
 Free Trial of AppDynamics
@@ -16,7 +43,6 @@ https://www.appdynamics.com/free-trial/
 Webhook notification:
 
 ~~~
-Sample Data
 {
             "account_name": "MY_APPD_SAAS",
             "policy_name": "Tomcat Server alert",
