@@ -1,6 +1,7 @@
 import time
 from datetime import datetime
 
+
 class Alert:
 
     def __init__(self, *args, **kwargs):
@@ -11,12 +12,11 @@ class Alert:
         self.event_dict["additional_info"] = self._update_additional()
         self.event_dict["occurred_at"] = self._update_ocurred_at()
 
-
     def _update(self):
         map_keys = {
             "displayName": "title",
-            "eventMessage": "summary",
-            "event_tier_name": "rule",
+            "summaryMessage": "description",
+            "eventTypeKey": "rule",
             "guid": "event_key"
         }
         for k, v in map_keys.items():
@@ -27,7 +27,7 @@ class Alert:
                 print(f"Fail to get key: {k}")
 
     def _update_severity(self):
-        severity = self.alert.get("severity","INFO")
+        severity = self.alert.get("severity", "INFO")
         if severity == "WARN":
             severity = "WARNING"
         self.event_dict["severity"] = severity
@@ -48,7 +48,7 @@ class Alert:
 
     def _update_ocurred_at(self):
         date_string = self.alert.get("eventTime", None)
-        if date_string == None:
+        if date_string is None:
             datetimeobj = datetime.utcnow()
         else:
             format_string = "%a %b %d %H:%M:%S %Z %Y"
