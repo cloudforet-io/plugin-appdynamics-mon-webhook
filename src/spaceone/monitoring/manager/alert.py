@@ -17,7 +17,7 @@ class Alert:
             "displayName": "title",
             "summaryMessage": "description",
             "eventTypeKey": "rule",
-            "guid": "event_key"
+            "event_id": "event_key"
         }
         for k, v in map_keys.items():
             item = self.alert.get(k, None)
@@ -35,7 +35,8 @@ class Alert:
     def _update_additional(self):
         additional = {}
         map_keys = {
-            "deepLink": "url"
+            "deepLink": "url",
+            "application_name": "application"
         }
 
         for k, v in map_keys.items():
