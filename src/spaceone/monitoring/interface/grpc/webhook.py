@@ -1,5 +1,6 @@
 from spaceone.api.monitoring.plugin import webhook_pb2, webhook_pb2_grpc
 from spaceone.core.pygrpc import BaseAPI
+from spaceone.monitoring.info.common_info import EmptyInfo
 
 
 class Webhook(BaseAPI, webhook_pb2_grpc.WebhookServicer):
