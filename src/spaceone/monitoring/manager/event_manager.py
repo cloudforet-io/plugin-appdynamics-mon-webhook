@@ -1,13 +1,10 @@
 import logging
-import hashlib
-import json
-from spaceone.core import utils
-from datetime import datetime
 from spaceone.core.manager import BaseManager
 from spaceone.monitoring.manager.alert import Alert
 
 from spaceone.monitoring.model.event_response_model import EventModel
-from spaceone.monitoring.error.event import *
+from spaceone.monitoring.error.event import ERROR_CHECK_VALIDITY
+
 _LOGGER = logging.getLogger(__name__)
 _EXCEPTION_TO_PASS = ["Test notification"]
 
@@ -18,16 +15,16 @@ class EventManager(BaseManager):
 
     def parse(self, raw_data):
         results = []
-        events = raw_data.get('events', [])
+        events = raw_data.get("events", [])
         for event in events:
             inst = Alert(event)
             event_dict = inst.get_event_dict()
             event_vo = self._check_validity(event_dict)
             results.append(event_vo)
-        _LOGGER.debug(f'[EventManager] parse Event : {event_dict}')
+        _LOGGER.debug(f"[EventManager] parse Event : {event_dict}")
 
         return results
- 
+
     @staticmethod
     def _check_validity(event_dict):
         try:
@@ -38,4 +35,3 @@ class EventManager(BaseManager):
 
         except Exception as e:
             raise ERROR_CHECK_VALIDITY(field=e)
-

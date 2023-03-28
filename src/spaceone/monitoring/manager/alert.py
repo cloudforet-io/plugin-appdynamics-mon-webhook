@@ -1,9 +1,7 @@
-import time
 from datetime import datetime
 
 
 class Alert:
-
     def __init__(self, *args, **kwargs):
         self.event_dict = {"event_type": "ALERT"}
         self.alert = args[0]
@@ -17,7 +15,7 @@ class Alert:
             "displayName": "title",
             "summaryMessage": "description",
             "eventTypeKey": "rule",
-            "event_id": "event_key"
+            "event_id": "event_key",
         }
         for k, v in map_keys.items():
             item = self.alert.get(k, None)
@@ -34,10 +32,7 @@ class Alert:
 
     def _update_additional(self):
         additional = {}
-        map_keys = {
-            "deepLink": "url",
-            "application_name": "application"
-        }
+        map_keys = {"deepLink": "url", "application_name": "application"}
 
         for k, v in map_keys.items():
             item = self.alert.get(k, None)
@@ -58,5 +53,3 @@ class Alert:
 
     def get_event_dict(self):
         return self.event_dict
-
-

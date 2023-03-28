@@ -16,25 +16,20 @@
 
 from setuptools import setup, find_packages
 
-with open('VERSION', 'r') as f:
+with open("VERSION", "r") as f:
     VERSION = f.read().strip()
     f.close()
 
 setup(
-    name='plugin-cisco-appdynamics-mon-webhook',
+    name="plugin-cisco-appdynamics-mon-webhook",
     version=VERSION,
-    description='Cisco AppDynamics Webhook',
-    long_description='',
-    url='https://cloudforet.io/',
-    author='MEGAZONE SpaceONE Team',
-    author_email='choonhoson@megazone.com',
-    license='Apache License 2.0',
+    description="Cisco AppDynamics Webhook",
+    long_description="",
+    url="https://cloudforet.io/",
+    author="MEGAZONE SpaceONE Team",
+    author_email="choonhoson@megazone.com",
+    license="Apache License 2.0",
     packages=find_packages(),
-    install_requires=[
-        'spaceone-core',
-        'spaceone-api',
-        'spaceone-tester',
-        'schematics'
-    ],
+    install_requires=["spaceone-core", "spaceone-api", "spaceone-tester", "schematics"],
     zip_safe=False,
 )

@@ -1,4 +1,4 @@
-__all__ = ['EmptyInfo']
+__all__ = ["EmptyInfo"]
 
 from google.protobuf.empty_pb2 import Empty
 

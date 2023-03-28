@@ -1,7 +1,12 @@
 from schematics.models import Model
-from schematics.types import DictType, StringType, ModelType, DateTimeType, ListType, FloatType
+from schematics.types import (
+    DictType,
+    StringType,
+    ModelType,
+    DateTimeType,
+)
 
-__all__ = ['EventModel']
+__all__ = ["EventModel"]
 
 
 class ResourceModel(Model):
@@ -12,12 +17,15 @@ class ResourceModel(Model):
 
 class EventModel(Model):
     event_key = StringType(required=True)
-    event_type = StringType(choices=['RECOVERY', 'ALERT'], default='ALERT')
+    event_type = StringType(choices=["RECOVERY", "ALERT"], default="ALERT")
     title = StringType(required=True)
-    description = StringType(default='')
-    severity = StringType(choices=['CRITICAL', 'ERROR', 'WARNING', 'INFO', 'NOT_AVAILABLE', 'NONE'], default='NONE')
+    description = StringType(default="")
+    severity = StringType(
+        choices=["CRITICAL", "ERROR", "WARNING", "INFO", "NOT_AVAILABLE", "NONE"],
+        default="NONE",
+    )
     resource = ModelType(ResourceModel)
-    rule = StringType(default='')
+    rule = StringType(default="")
     occurred_at = DateTimeType()
     additional_info = DictType(StringType(), default={})
-    image_url = StringType(default='')
+    image_url = StringType(default="")
