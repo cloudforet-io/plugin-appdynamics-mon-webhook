@@ -15,12 +15,11 @@ class EventManager(BaseManager):
 
     def parse(self, raw_data):
         results = []
-        events = raw_data.get("events", [])
-        for event in events:
-            inst = Alert(event)
-            event_dict = inst.get_event_dict()
-            event_vo = self._check_validity(event_dict)
-            results.append(event_vo)
+        inst = Alert(raw_data)
+        event_dict = inst.get_event_dict()
+        event_vo = self._check_validity(event_dict)
+        results.append(event_vo)
+
         _LOGGER.debug(f"[EventManager] parse Event : {event_dict}")
 
         return results
