@@ -8,11 +8,16 @@ Cloudforet supports a webhook integration with AppDynamics.
 2. On the ***Alert*** sub menu:
 * Select ***Webhook*** menu
 * Click ***Add*** button
-3. Select ***Cisco AppDynamics*** and update ***Name***
-4. Remember ***Webhook URL***
 
 ![Configure](1_cloudforet_configure.png)
+
+3. Select ***Cisco AppDynamics*** and update ***Name***
+
 ![Create Webhook](2_create_webhook.png)
+
+4. Remember ***Webhook URL***
+
+![Create Webhook](2_1_webhook.png)
 
 # In AppDynamics
 
