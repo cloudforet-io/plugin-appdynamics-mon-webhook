@@ -44,48 +44,28 @@ Webhook notification:
 
 ~~~
 {
-            "account_name": "MY_APPD_SAAS",
-            "policy_name": "Tomcat Server alert",
-            "events": [
-                {
-                    "guid": "aaaaaaaa",
-                    "event_id": "1234",
-                    "application_name": "MyApp",
-                    "severity": "ERROR",
-                    "displayName": "Ongoing Critical Health Rule Violation",
-                    "summaryMessage": "AppDynamics has detected a problem with Business Transaction <b>/</b>.
-                        <br><b>Business Transaction Health</b> continues to violate with <b>critical</b>.<br>
-                        All of the following conditions were found to be violating<br>For Application <b>MyApp</b>:<br>
-                        1) Calls per Minute Condition<br><b>Calls per Minute's</b> value <b>89072.00</b>
-                        was <b>greater than</b> the threshold <b>50.00</b> for the last <b>2</b> minutes.<br>",
-                    "eventTypeKey": "Health Rule",
-                    "eventTime": "Mon Mar 13 08:57:55 UTC 2023",
-                    "deepLink": "https://MY_APPD_SAAS.saas.appdynamics.com/#location=
-                        APP_EVENT_VIEWER_MODAL&eventSummary=31062509&application=108979",
-                },
-                {
-                    "guid": "bbbbbbbbbb",
-                    "severity": "WARN",
-                    "event_id": "1234",
-                    "application_name": "MyApp",
-                    "displayName": "Ongoing Critical Health Rule Violation",
-                    "summaryMessage": "AppDynamics has detected a problem with Business Transaction
-                        <b>/manager/WEB-INF</b>.<br><b>Business Transaction Health</b> continues to violate with
-                        <b>critical</b>.<br>All of the following conditions were found to be violating<br>
-                        For Application <b>MyApp</b>:<br>
-                        1) Calls per Minute Condition<br><b>Calls per Minute's</b> value <b>89070.00</b>
-                        was <b>greater than</b> the threshold <b>50.00</b> for the last <b>2</b> minutes.<br>",
-                    "eventTypeKey": "Health Rule",
-                    "eventTime": "Mon Mar 13 08:57:55 UTC 2023",
-                    "deepLink": "https://MY_APPD_SAAS.saas.appdynamics.com/#location=APP_EVENT_VIEWER_MODAL&
-                    eventSummary=31062508&application=108979",
-                },
-            ],
-            "topSeverity": "ERROR",
-            "controllerUrl": "https://MY_APPD_SAAS.saas.appdynamics.com",
-            "action_name": "spaceone-dev-test",
-        }
-
+    "event_name": "New Critical Health Rule Violation",
+    "event_guid": "a35260de-34ff-476f-bcb9-c44fd1afd913",
+    "event_id": "33021165",
+    "policy": "JAVA alert",
+    "event_time": "Mon Apr 03 02:04:55 UTC 2023",
+    "app_id": "108979",
+    "app_name": "MyApp",
+    "event_message": "AppDynamics has detected a problexm .....",
+    "severity": "ERROR",
+    "event_deep_link": "https://painted20230307xxxx.saas.appdynamics.com/#location=APP_EVENT_Vxxxx",
+    "controller_url": "https://painted20230307xxxxx.saas.appdynamics.com",
+    "node_id": "${latestEvent.node.id}",
+    "node_name": "${latestEvent.node.name}",
+    "summary": "AppDynamics has detected a problem with Business xxxxxx.",
+    "event_type": "POLICY_OPEN_CRITICAL",
+    "tier_id": "201066",
+    "tier_name": "MyTier",
+    "health_rule_id": "615178",
+    "health_rule_name": "Business Transaction Health",
+    "incident_id": "70646",
+    "incident_name": "Business Transaction Health"
+    }
 ~~~
 
 | Field 	| Description |
@@ -96,19 +76,20 @@ Webhook notification:
 
 ## Event key criteria
 
-* Unique key for related events
+* incident_id, if exist
+* event_id, if incident_id does not exist
 
 ## monitoring.Event Data Map
 | Field		| Type | Description	| Example	|
 | ---      | ---     | ---           | ---           |
-| event_key | str | events[].? | ? |
+| event_key | str | incdent_id or event_id | ? |
 | event_type |  str  | RECOVERY , ALERT based on raw_data.incident.state | RECOVERY	|
-| title | str	| events[].displayName	| Ongoing Critical Health Rule Violation	|
-| description | str | events[].summaryMessage	| AppDynamics has detected ...		|
-| severity | str  | events[].severity | ALERT	|
+| title | str	| event_name	| New Critical Health Rule Violation	|
+| description | str | event_message	| AppDynamics has detected ...		|
+| severity | str  | severity | ALERT	|
 | resource | dict | ...		| N/A	|
 | addtional_info | dict | ... 	| {"application": "MyApp", "url" "https://...." } |
-| occured_at | datetime | events[].eventTime | "2021-08-23T06:47:32.753Z" |
+| occured_at | datetime | event_time | "2021-08-23T06:47:32.753Z" |
 
 # Reference
 

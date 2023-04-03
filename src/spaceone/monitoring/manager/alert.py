@@ -13,7 +13,7 @@ Sample data
     "event_message": "AppDynamics has detected a problexm .....",
     "severity": "ERROR",
     "event_deep_link": "https://painted20230307xxxx.saas.appdynamics.com/#location=APP_EVENT_Vxxxx",
-    "controller_url": "https://painted202303071552476.saas.appdynamics.com",
+    "controller_url": "https://painted20230307xxxxxxx.saas.appdynamics.com",
     "node_id": "${latestEvent.node.id}",
     "node_name": "${latestEvent.node.name}",
     "summary": "AppDynamics has detected a problem with Business xxxxxx.",
@@ -62,7 +62,12 @@ class Alert:
 
     def _update_additional(self):
         additional = {}
-        map_keys = {"event_deep_link": "url", "app_name": "application"}
+        map_keys = {
+            "event_deep_link": "event_url",
+            "app_name": "application",
+            "controller_url": "controller_url",
+            "tier_name": "tier_name",
+        }
 
         for k, v in map_keys.items():
             item = self.alert.get(k, None)
