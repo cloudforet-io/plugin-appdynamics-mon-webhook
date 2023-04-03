@@ -5,7 +5,7 @@ webhook from Cisco AppDynamics
 
 # Data Model
 
-https://docs.appdynamics.com/appd/4.5.x/en/appdynamics-essentials/alert-and-respond/actions/predefined-templating-variables
+https://docs.appdynamics.com/appd/23.x/latest/en/appdynamics-essentials/alert-and-respond/actions/http-request-actions-and-templates
 
 ## HTTP Request Template (Payload)
 
@@ -112,4 +112,4 @@ Webhook notification:
 
 # Reference
 
-https://docs.appdynamics.com/appd/4.5.x/en/appdynamics-essentials/alert-and-respond/actions/http-request-actions-and-templates
+https://docs.appdynamics.com/appd/23.x/latest/en/appdynamics-essentials/alert-and-respond/actions/predefined-templating-variables
