@@ -1,6 +1,6 @@
 name: Cisco AppDynamics
 service_type: monitoring.Webhook
-image: pyengine/plugin-cisco-appdynamics-mon-webhook
+image: pyengine/plugin-appdynamics-mon-webhook
 capability: {}
 tags:
   icon: https://spaceone-custom-assets.s3.ap-northeast-2.amazonaws.com/console-assets/icons/appdynamics.png

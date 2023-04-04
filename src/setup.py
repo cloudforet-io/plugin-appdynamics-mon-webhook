@@ -21,7 +21,7 @@ with open("VERSION", "r") as f:
     f.close()
 
 setup(
-    name="plugin-cisco-appdynamics-mon-webhook",
+    name="plugin-appdynamics-mon-webhook",
     version=VERSION,
     description="Cisco AppDynamics Webhook",
     long_description="",

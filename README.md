@@ -1,4 +1,4 @@
-# plugin-cisco-appdynamics-mon-webhook
+# plugin-appdynamics-mon-webhook
 webhook from Cisco AppDynamics
 
 ![Architecture](docs/en/appdynamics-webhook-architecture.png)
